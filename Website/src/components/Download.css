@@ -1,0 +1,116 @@
+.download-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); /* A fresh, hopeful green gradient */
+  text-align: center;
+}
+
+.download-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.download-section h2 {
+  font-size: 2.5rem;
+  color: #2e7d32; /* Dark Green */
+  margin-bottom: 1rem;
+}
+
+.download-subtitle {
+  font-size: 1.2rem;
+  color: #388e3c; /* Medium Green */
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.download-button {
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px; /* Ensure buttons have a decent width */
+}
+
+.app-store-button {
+  background-color: #007aff; /* Apple Blue */
+  color: white;
+}
+
+.app-store-button:hover {
+  background-color: #0056b3; /* Darker Apple Blue */
+  transform: translateY(-2px);
+}
+
+.google-play-button {
+  background-color: #4caf50; /* Google Play Green */
+  color: white;
+}
+
+.google-play-button:hover {
+  background-color: #388e3c; /* Darker Google Play Green */
+  transform: translateY(-2px);
+}
+
+/* Placeholder for actual badge images */
+.download-button img {
+  height: 24px; /* Adjust as needed */
+  margin-right: 10px;
+}
+
+.app-preview-placeholder {
+  margin: 2rem auto 2rem auto;
+  width: 80%;
+  max-width: 350px;
+  height: 250px; /* Adjust as needed */
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #757575;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.availability-note {
+  font-size: 1rem;
+  color: #2e7d32; /* Dark Green */
+  margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .download-section h2 {
+    font-size: 2rem;
+  }
+  .download-subtitle {
+    font-size: 1rem;
+  }
+  .download-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .download-button {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+  }
+}
+

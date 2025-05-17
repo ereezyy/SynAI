@@ -1,0 +1,80 @@
+.features-section {
+  padding: 4rem 2rem;
+  background-color: #ffffff; /* White background for clean look */
+}
+
+.features-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  color: #005792; /* Darker Teal/Blue */
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-item {
+  background-color: #f0f8ff; /* Soft Alice Blue - consistent with Navbar */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  font-size: 2.5rem; /* Placeholder styling */
+  color: #0077b6; /* Medium Teal/Blue */
+  margin-bottom: 1rem;
+  /* Placeholder for actual icon styling */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #d0e0f0; /* Lighter shade for icon background */
+}
+
+.icon-placeholder { /* Styling for the placeholder div */
+  font-weight: bold;
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  color: #004d40; /* Dark Teal */
+  margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #333333; /* Dark Gray for readability */
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .features-section h2 {
+    font-size: 2rem;
+  }
+  .feature-item h3 {
+    font-size: 1.3rem;
+  }
+  .feature-item p {
+    font-size: 0.95rem;
+  }
+}
+

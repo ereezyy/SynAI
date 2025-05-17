@@ -1,0 +1,38 @@
+.about-section {
+  padding: 4rem 2rem;
+  background-color: #e0f2f7; /* Very Light Teal/Cyan - slightly different from hero for separation */
+}
+
+.about-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: #005792; /* Darker Teal/Blue */
+  margin-bottom: 2rem;
+}
+
+.about-content {
+  text-align: left;
+  font-size: 1.1rem;
+  color: #333333; /* Dark Gray for readability */
+  line-height: 1.7;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section h2 {
+    font-size: 2rem;
+  }
+  .about-content {
+    font-size: 1rem;
+  }
+}
+
