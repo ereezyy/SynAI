@@ -1,154 +1,20 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
-    id 'com.google.gms.google-services'  // Google Services Plugin for Firebase
-    id 'com.google.firebase.crashlytics' // Firebase Crashlytics Plugin
-}
-
-android {
-    compileSdk 34
-    namespace "com.example.synapseai"
-    defaultConfig {
-        applicationId "com.example.synapseai"
-        minSdk 31
-        targetSdk 34
-        versionCode 1
-        versionName "1.0.0"
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    // Buildscript repositories are still needed
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    // Add kapt options to fix annotation processing issues
-    kapt {
-        correctErrorTypes = true
-        arguments {
-            arg("room.schemaLocation", "$projectDir/schemas")
-            arg("room.incremental", "true")
-            arg("room.expandProjection", "true")
-        }
-    }
-    // Load keystore.properties file
-    def keystorePropertiesFile = rootProject.file("keystore.properties")
-    def keystoreProperties = new Properties()
-    if (keystorePropertiesFile.exists()) {
-        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-    }
-
-    signingConfigs {
-        release {
-            if (keystorePropertiesFile.exists()) {
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-            } else {
-                // Fallback to placeholder values for development
-                storeFile file("placeholder.keystore")
-                storePassword "placeholder_password"
-                keyAlias "placeholder_alias"
-                keyPassword "placeholder_key_password"
-            }
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
-        debug {
-            // Debug configuration remains unchanged
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.8'
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.9.3'  // Using a stable Android Gradle Plugin version
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22'  // Kotlin plugin for Android
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.50'  // Hilt dependency injection
+        classpath 'com.google.gms:google-services:4.4.0'  // Google Services for Firebase
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.3'  // Firebase Crashlytics
     }
 }
 
-dependencies {
-    // Core Android dependencies
-    implementation 'androidx.core:core-ktx:1.12.0'
-    implementation 'androidx.compose.ui:ui:1.5.4'
-    implementation 'androidx.compose.material3:material3:1.1.2'
-    implementation 'androidx.compose.ui:ui-tooling-preview:1.5.4'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
-    implementation 'androidx.activity:activity-compose:1.7.2'
 
-    // Hilt dependency injection
-    implementation "com.google.dagger:hilt-android:2.50"
-    kapt "com.google.dagger:hilt-compiler:2.50"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:32.7.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-messaging-ktx'
-    implementation 'com.google.firebase:firebase-config-ktx'
-    implementation 'com.google.firebase:firebase-abt'
-
-    // Architecture Components
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2'
-    implementation 'androidx.navigation:navigation-compose:2.7.5'
-
-    // WorkManager for background tasks
-    implementation 'androidx.work:work-runtime-ktx:2.8.1'
-    implementation 'androidx.hilt:hilt-work:1.0.0'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    implementation 'androidx.startup:startup-runtime:1.1.1'
-
-    // Local Database
-    implementation 'androidx.room:room-runtime:2.6.0'
-    implementation 'androidx.room:room-ktx:2.6.0'
-    kapt 'androidx.room:room-compiler:2.6.0'
-
-    // Coroutines for async operations
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
-
-    // API calls
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.8.9'
-
-    // Logging
-    implementation 'com.jakewharton.timber:timber:5.0.1'
-
-    // Testing
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.5.4'
-
-    // MockK for mocking in tests
-    testImplementation 'io.mockk:mockk:1.13.8'
-    androidTestImplementation 'io.mockk:mockk-android:1.13.8'
-
-    // Robolectric for unit tests that require Android framework
-    testImplementation 'org.robolectric:robolectric:4.11.1'
-
-    // Screenshot testing
-    androidTestImplementation 'androidx.test:runner:1.5.2'
-    androidTestImplementation 'androidx.test:rules:1.5.0'
-    testImplementation 'com.github.cashapp:paparazzi:1.3.1'
-
-    // UI Automator for notification and system UI testing
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-
-    // Performance benchmarking
-    androidTestImplementation 'androidx.benchmark:benchmark-junit4:1.2.0-beta03'
-    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.5.1'
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
 }
