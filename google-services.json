@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708600868384",
+    "project_id": "syn-ai-12c6f",
+    "storage_bucket": "syn-ai-12c6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708600868384:android:f3b1b3e5f8c6d7a9b8c9d0",
+        "android_client_info": {
+          "package_name": "com.example.synapseai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708600868384-sample.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKjV1234567890abcdefgHIJklMnOpQrstuvwxyz"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708600868384-sample.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
