@@ -1,0 +1,49 @@
+debug: false
+
+logging:
+  level: INFO
+  directory: logs
+
+database:
+  supabase_url: ${VITE_SUPABASE_URL}
+  supabase_key: ${VITE_SUPABASE_SUPABASE_ANON_KEY}
+
+ai:
+  openai_key: ${OPENAI_API_KEY}
+  anthropic_key: ${ANTHROPIC_API_KEY}
+  default_model: gpt-4
+  temperature: 0.7
+  max_tokens: 2000
+
+self_healing:
+  enabled: true
+  auto_fix_enabled: true
+  min_confidence: 0.7
+  backup_dir: backups
+  max_backups: 10
+
+self_awareness:
+  monitoring_interval: 60
+  health_check_interval: 300
+  metrics_retention_days: 30
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  workers: 4
+  cors_origins:
+    - http://localhost:3000
+    - http://localhost:5173
+
+webhooks:
+  enabled: true
+  secret_key: ${WEBHOOK_SECRET}
+  max_retries: 3
+
+integrations:
+  calendar:
+    enabled: false
+  email:
+    enabled: false
+  messaging:
+    enabled: false
